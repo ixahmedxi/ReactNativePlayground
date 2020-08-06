@@ -1,10 +1,21 @@
 import React from 'react'
-import {SafeAreaView, StatusBar, StyleSheet, Text} from 'react-native'
+import {
+  Keyboard,
+  SafeAreaView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  TouchableWithoutFeedback,
+  View
+} from 'react-native'
 import {Input} from './components/Input'
 import {RenderItems} from './components/RenderItems'
 import {TodosProvider} from './contexts/TodosContext'
 
 const styles = StyleSheet.create({
+  app: {
+    flex: 1
+  },
   container: {
     marginHorizontal: 30
   },
@@ -22,11 +33,15 @@ const App = () => {
     <>
       <StatusBar barStyle="dark-content" />
       <TodosProvider>
-        <SafeAreaView style={styles.container}>
-          <Text style={styles.title}>My Todo App</Text>
-          <Input />
-          <RenderItems />
-        </SafeAreaView>
+        <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+          <View style={styles.app}>
+            <SafeAreaView style={styles.container}>
+              <Text style={styles.title}>My Todo App</Text>
+              <Input />
+              <RenderItems />
+            </SafeAreaView>
+          </View>
+        </TouchableWithoutFeedback>
       </TodosProvider>
     </>
   )

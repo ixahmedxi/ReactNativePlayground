@@ -10,6 +10,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 30
   },
+  button: {
+    padding: 10
+  },
   text: {
     fontSize: 16
   }
@@ -21,7 +24,7 @@ export const TodoItem: React.FC<{text: string; id: string}> = ({text, id}) => {
     <View style={styles.wrapper}>
       <Text style={styles.text}>{text}</Text>
       <TouchableHighlight onPress={() => removeItem(id)}>
-        <View>
+        <View style={styles.button}>
           <Icon name="trash-2" size={20} color="rgba(0, 0, 0, 0.5)" />
         </View>
       </TouchableHighlight>
